@@ -1,5 +1,7 @@
 package com.example.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -11,6 +13,7 @@ public class Atleta {
     private String nombre;
     private String apellidos;
     private String nacionalidad;
+    @JsonIgnore
     private LocalDate fechan;
 
     public Atleta(String nombre, String apellidos, String nacionalidad, LocalDate fechan) {

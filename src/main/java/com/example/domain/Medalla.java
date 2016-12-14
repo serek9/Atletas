@@ -35,9 +35,6 @@ public class Medalla {
         this.id = id;
     }
 
-    public TipoMedalla getTipoMedalla() {return tipoMedalla;}
-    public void setTipoMedalla(TipoMedalla tipoMedalla) {this.tipoMedalla = tipoMedalla;}
-
     public String getEspecialidad() {
         return especialidad;
     }
@@ -57,6 +54,13 @@ public class Medalla {
     }
     public void setAtleta(Atleta atleta) {
         this.atleta = atleta;
+    }
+
+    public TipoMedalla getTipoMedalla() {
+        return tipoMedalla;
+    }
+    public void setTipoMedalla(TipoMedalla tipoMedalla) {
+        this.tipoMedalla = tipoMedalla;
     }
 
     @Override

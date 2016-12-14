@@ -3,6 +3,7 @@ package com.example.controller;
 
 import com.example.domain.Atleta;
 import com.example.domain.Medalla;
+import com.example.domain.TipoMedalla;
 import com.example.repository.AtletaRepository;
 import com.example.repository.MedallaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,6 @@ public class AtletaController {
 
     @Autowired
     private AtletaRepository atletaRepository;
-    @Autowired
-    private MedallaRepository medallaRepository;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -32,7 +31,7 @@ public class AtletaController {
     public Atleta updateAtleta(@RequestBody Atleta atleta){ return atletaRepository.save(atleta);}
 
     @GetMapping
-    public List<Atleta> findAll(){ return atletaRepository.findAll();}
+    public List<Atleta> findAllAtletas(){ return atletaRepository.findAll();}
 
     //ATLETAS DE UNA NACIONALIDAD DETERMINADA
     @GetMapping("/byNacionalidad/{nacionalidad}")
@@ -64,12 +63,5 @@ public class AtletaController {
                 .parallelStream()
                 .collect(Collectors.groupingBy(Atleta::getNacionalidad));
     }
-    //ATLETAS AGRUPADOS POR MEDALLLA EN UN MAP(LIST ATLETA)
-    @GetMapping("/byTipoMedalla")
-    public Map<enum Enumeracion{Oro, Plata, Bronce}, List<Medalla>> findByTipoMedalla(){
-        return medallaRepository
-                .findAll()
-                .parallelStream()
-                .collect(Collectors.groupingBy(Medalla::))
-    }
+
 }

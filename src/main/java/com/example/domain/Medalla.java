@@ -7,19 +7,26 @@ public class Medalla {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private enum Enumeracion{Oro, Plata, Bronce}
+    private TipoMedalla tipoMedalla;
     private String especialidad;
     private String competicion;
     @ManyToOne
     private Atleta atleta;
 
-    public Medalla(String especialidad, String competicion) {
+    public Medalla(TipoMedalla tipoMedalla, String especialidad, String competicion) {
+        this.tipoMedalla = tipoMedalla;
         this.especialidad = especialidad;
         this.competicion = competicion;
     }
 
-    public Medalla(){
+    public Medalla(TipoMedalla tipoMedalla, String especialidad, String competicion, Atleta atleta) {
+        this.tipoMedalla = tipoMedalla;
+        this.especialidad = especialidad;
+        this.competicion = competicion;
+        this.atleta = atleta;
     }
+
+    public Medalla(){}
 
     public Long getId() {
         return id;
@@ -27,6 +34,9 @@ public class Medalla {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public TipoMedalla getTipoMedalla() {return tipoMedalla;}
+    public void setTipoMedalla(TipoMedalla tipoMedalla) {this.tipoMedalla = tipoMedalla;}
 
     public String getEspecialidad() {
         return especialidad;
@@ -53,6 +63,7 @@ public class Medalla {
     public String toString() {
         return "Medalla{" +
                 "id=" + id +
+                ", tipoMedalla=" + tipoMedalla +
                 ", especialidad='" + especialidad + '\'' +
                 ", competicion='" + competicion + '\'' +
                 ", atleta=" + atleta +
